@@ -40,6 +40,7 @@ body {
 select {
     height: 2em;
     outline: none;
+    background-color: var(--white);
 }
 .deptselection {
     margin: 0 auto 10px 0;
@@ -96,6 +97,8 @@ button:hover {
 .author {
     font-size: 11px;
     letter-spacing: 5px;
+    color: var(--white);
+    cursor: pointer;
 }
 
 /* Modal styling */
@@ -111,7 +114,7 @@ button:hover {
 }
 
 .modal-content {
-  background: white;
+  background: var(--white);
   padding: 20px;
   border-radius: 8px;
   width: 300px;
@@ -173,5 +176,5 @@ button:hover {
 
   body {
   margin: 0;
-}
+  }
 }
