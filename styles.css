@@ -161,3 +161,17 @@ button:hover {
   opacity: 1;
   visibility: visible;
 }
+
+
+@media (max-width: 480px) {
+  .container {
+    margin: auto;
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+  }
+
+  body {
+  margin: 0;
+}
+}
