@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science Education CGPA Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container"> 
+            
+                <img class="logo" src="./assest/departmentlogo.jpeg" alt="departmentlogo">
+                <h1 >NAU - Science Education CGPA Calculator</h1>
+        
+           
+            <!-- Department selection -->
+             <span class="deptselection">
+                <label for="dept">Select Discipline:</label>
+                <select id="dept">
+                <option value="">--Choose Discipline--</option>
+                <option value="cs">Computer Science</option>
+                <option value="bio">Biology</option>
+                <option value="chem">Chemistry</option>
+                <option value="math">Mathematics</option>
+                <option value="phy">Physics</option>
+                <option value="is">Integrated Science</option>
+                <option value="nSc">Not in Science Education</option>
+            </select>
+             </span>
+            
+
+            <!-- Year selection -->
+             <span class="deptselection">
+                 <label for="year">Select Year:</label>
+                <select id="year">
+                    <option value="">--Choose Year--</option>
+                    <option value="1">Year 1</option>
+                    <option value="2">Year 2</option>
+                    <option value="3">Year 3</option>
+                    <option value="4">Year 4</option>
+                </select>
+             </span>
+           
+
+            <!-- Courses container -->
+            <div id="courses"></div>
+
+            <!-- GPA Display -->
+            <h2>Current CGPA: <span id="cgpa">0.00</span></h2>
+            <button id="clearData">Clear Data</button>
+
+            <!-- Hidden Add Course Form -->
+            <div id="addCourseForm" class="modal">
+            <div class="modal-content">
+                <h3>Add Extra Course</h3>
+                <label>Course Code: <input type="text" id="newCourseCode"></label><br>
+                <label>Course Name: <input type="text" id="newCourseName"></label><br>
+                <label>Credit Units: <input type="number" id="newCourseCredit"></label><br>
+                <button id="saveCourse">Save Course</button>
+                <button id="cancelCourse">Cancel</button>
+            </div>
+            </div>
+
+            <span class="author">&copy;Developed by Krest</span>
+    </div>
+
+  <script src="courses.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
