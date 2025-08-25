@@ -172,6 +172,7 @@ button:hover {
   visibility: visible;
 }
 
+
 @media (max-width: 550px) {
   .container {
     margin: auto;
