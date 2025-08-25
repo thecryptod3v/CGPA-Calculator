@@ -172,7 +172,7 @@ button:hover {
   visibility: visible;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .container {
     margin: auto;
     width: 100%;
@@ -183,5 +183,9 @@ button:hover {
 
   body {
     margin: 0;
+  }
+
+  input[type="radio"] {
+    margin: -4px;
   }
 }
