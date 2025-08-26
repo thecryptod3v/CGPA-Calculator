@@ -269,17 +269,17 @@ const coursesData = {
     1: {
       first: [
         ...sharedCourses[1].first,
-        { code: "BIO101", name: "General Biology I", credit: 3 },
-        { code: "BIO103", name: "General Biology Practical", credit: 0 },
-        { code: "SED101", name: "Basic Chemistry I", credit: 3 },
-        { code: "MAT101", name: "Elementary Mathematics I", credit: 3 },
+        // { code: "BIO101", name: "General Biology I", credit: 3 },
+        // { code: "BIO103", name: "General Biology Practical", credit: 0 },
+        // { code: "SED101", name: "Basic Chemistry I", credit: 3 },
+        // { code: "MAT101", name: "Elementary Mathematics I", credit: 3 },
       ],
       second: [
         ...sharedCourses[1].second,
-        { code: "BIO102", name: "Cell Biology", credit: 3 },
+        // { code: "BIO102", name: "Cell Biology", credit: 3 },
       ]
     }
-    // Add year 2–4 Biology...
+    // Add year 2–4 chemistry...
   },
 
   //Physics course list....
@@ -287,17 +287,67 @@ const coursesData = {
     1: {
       first: [
         ...sharedCourses[1].first,
-        { code: "BIO101", name: "General Biology I", credit: 3 },
-        { code: "BIO103", name: "General Biology Practical", credit: 0 },
-        { code: "SED101", name: "Basic Chemistry I", credit: 3 },
+        { code: "PHY101", name: "General Physics I", credit: 3 },
+        { code: "PHY103", name: "General Physics II (Properties)", credit: 2 },
+        { code: "PHY107", name: "General Physics Laboratory", credit: 1 },
         { code: "MAT101", name: "Elementary Mathematics I", credit: 3 },
       ],
       second: [
         ...sharedCourses[1].second,
-        { code: "BIO102", name: "Cell Biology", credit: 3 },
+        { code: "PHY102", name: "Electricity & Magnetism", credit: 3 },
+        { code: "PHY108", name: "General Physics Laboratory", credit: 1 },
+        { code: "MAT102", name: "General Mathematics II", credit: 3 },
+      ]
+    },
+    2: {
+      first: [
+        ...sharedCourses[2].first,
+        { code: "PHY201", name: "Elementary Moderm Physics", credit: 3 },
+        { code: "PHY205", name: "Thermal Physics I", credit: 3 },
+        { code: "PHY207", name: "Experimental Physics I", credit: 1 },
+        { code: "MAT161", name: "Elementary Mechanics I", credit: 3 },
+      ],
+      second: [
+        ...sharedCourses[2].second,
+        { code: "PHY202", name: "Electrical Circuit & Electronics", credit: 3 },
+        { code: "PHY204", name: "Waves & Optics", credit: 3 },
+        { code: "PHY208", name: "Experimental Physics II", credit: 1 },
+        { code: "PHY206", name: "Energy Gen & Uses", credit: 3 },
+        { code: "MAT162", name: "Elementary Mechanics II", credit: 3 },
+      ]
+    },
+    3: {
+      first: [
+        ...sharedCourses[3].first,
+        { code: "PHY303", name: "Electricity & Magnetism", credit: 3 },
+        { code: "PHY305", name: "Quantum Machanics I", credit: 3 },
+        { code: "PHY307", name: "Experimental Physics", credit: 1 },
+        { code: "PHY313", name: "Electronics & Circuits", credit: 3 },
+        { code: "PHY309", name: "Introduction to Astronomy", credit: 3 },
+      ],
+      second: [
+        ...sharedCourses[3].second,
+      ]
+    },
+    4: {
+      first: [
+        ...sharedCourses[4].first,
+        { code: "PHY401", name: "Atomic Physics & Spectroscopy", credit: 3 },
+        { code: "PHY407", name: "Solar Energy I", credit: 3 },
+        { code: "PHY473", name: "Physics of the Earth", credit: 3 },
+        { code: "PHY415", name: "Interior Science of Materials I", credit: 3 },
+        { code: "PHY405", name: "Quantum Mechanics", credit: 3 },
+        { code: "PHY411", name: "Nuclear & Particle Physics I", credit: 3 },
+      ],
+      second: [
+        ...sharedCourses[4].second,
+        { code: "PHY408", name: "Solar Energy II", credit: 3 },
+        { code: "PHY474", name: "Industrial Geophysics", credit: 3 },
+        { code: "PHY414", name: "Solid State Physics II", credit: 3 },
+        { code: "PHY404", name: "Thermal & Statistical Physics", credit: 2 },
+        { code: "PHY412", name: "Nuclear & Particle Physics II", credit: 2 },
       ]
     }
-    // Add year 2–4 Biology...
   },
 
   //Integrated science course list.....
@@ -305,14 +355,14 @@ const coursesData = {
     1: {
       first: [
         ...sharedCourses[1].first,
-        { code: "BIO101", name: "General Biology I", credit: 3 },
-        { code: "BIO103", name: "General Biology Practical", credit: 0 },
-        { code: "SED101", name: "Basic Chemistry I", credit: 3 },
-        { code: "MAT101", name: "Elementary Mathematics I", credit: 3 },
+        // { code: "BIO101", name: "General Biology I", credit: 3 },
+        // { code: "BIO103", name: "General Biology Practical", credit: 0 },
+        // { code: "SED101", name: "Basic Chemistry I", credit: 3 },
+        // { code: "MAT101", name: "Elementary Mathematics I", credit: 3 },
       ],
       second: [
         ...sharedCourses[1].second,
-        { code: "BIO102", name: "Cell Biology", credit: 3 },
+        // { code: "BIO102", name: "Cell Biology", credit: 3 },
       ]
     }
     // Add year 2–4 Biology...

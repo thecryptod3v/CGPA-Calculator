@@ -1,23 +1,25 @@
 // script.js
 
-const deptSelect = document.getElementById('dept');
-const yearSelect = document.getElementById('year');
-const coursesDiv = document.getElementById('courses');
-const cgpaDisplay = document.getElementById('cgpa');
-const clearBtn = document.getElementById('clearData');
+const deptSelect = document.getElementById("dept");
+const yearSelect = document.getElementById("year");
+const coursesDiv = document.getElementById("courses");
+const cgpaDisplay = document.getElementById("cgpa");
+const clearBtn = document.getElementById("clearData");
 
-const addCourseForm = document.getElementById('addCourseForm');
-const newCourseCode = document.getElementById('newCourseCode');
-const newCourseName = document.getElementById('newCourseName');
-const newCourseCredit = document.getElementById('newCourseCredit');
-const saveCourseBtn = document.getElementById('saveCourse');
-const cancelCourseBtn = document.getElementById('cancelCourse');
+const addCourseForm = document.getElementById("addCourseForm");
+const newCourseCode = document.getElementById("newCourseCode");
+const newCourseName = document.getElementById("newCourseName");
+const newCourseCredit = document.getElementById("newCourseCredit");
+const saveCourseBtn = document.getElementById("saveCourse");
+const cancelCourseBtn = document.getElementById("cancelCourse");
 
 const gradePoints = { A: 5, B: 4, C: 3, D: 2, E: 1, F: 0 };
 
 let savedData = JSON.parse(localStorage.getItem("cgpaData")) || {};
 let extraCourses = JSON.parse(localStorage.getItem("extraCourses")) || {};
-let currentDept = "", currentYear = "", currentSemester = "";
+let currentDept = "",
+  currentYear = "",
+  currentSemester = "";
 
 // Render courses for selected dept/year
 function renderCourses() {
@@ -45,18 +47,28 @@ function renderCourses() {
       div.innerHTML = `
         <span class="course-name">
           ${course.code} (${course.credit} units)
-          <button type="button" class="info-btn" data-info="${course.name}">ℹ️</button>
+          <button type="button" class="info-btn" data-info="${
+            course.name
+          }">ℹ️</button>
           <span class="tooltip">${course.name}</span>
         </span>
-        ${["A","B","C","D","E","F"].map(g => `
+        ${["A", "B", "C", "D", "E", "F"]
+          .map(
+            (g) => `
           <label>
             <input type="radio" 
               name="course${dept}-${year}-custom-${idx}" 
               value="${g}" 
-              ${savedData[`${dept}-${year}-custom-${idx}`] === g ? "checked" : ""}>
+              ${
+                savedData[`${dept}-${year}-custom-${idx}`] === g
+                  ? "checked"
+                  : ""
+              }>
             ${g}
           </label>
-        `).join(" ")}
+        `
+          )
+          .join(" ")}
       `;
 
       // Tooltip
@@ -64,14 +76,14 @@ function renderCourses() {
       const tooltip = div.querySelector(".tooltip");
       infoBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        document.querySelectorAll(".tooltip.show").forEach(t => {
+        document.querySelectorAll(".tooltip.show").forEach((t) => {
           if (t !== tooltip) t.classList.remove("show");
         });
         tooltip.classList.toggle("show");
       });
 
       // Save grade
-      div.querySelectorAll("input").forEach(input => {
+      div.querySelectorAll("input").forEach((input) => {
         input.addEventListener("change", () => {
           savedData[`${dept}-${year}-custom-${idx}`] = input.value;
           localStorage.setItem("cgpaData", JSON.stringify(savedData));
@@ -100,7 +112,7 @@ function renderCourses() {
   let yearData = coursesData[dept]?.[year];
   if (!yearData) return;
 
-  Object.keys(yearData).forEach(semester => {
+  Object.keys(yearData).forEach((semester) => {
     const semDiv = document.createElement("div");
     semDiv.classList.add("semester-block");
     semDiv.innerHTML = `<h3 class="header-semester">${semester.toUpperCase()} SEMESTER</h3>`;
@@ -118,18 +130,28 @@ function renderCourses() {
       div.innerHTML = `
         <span class="course-name">
           ${course.code} (${course.credit} units)
-          <button type="button" class="info-btn" data-info="${course.name}">ℹ️</button>
+          <button type="button" class="info-btn" data-info="${
+            course.name
+          }">ℹ️</button>
           <span class="tooltip">${course.name}</span>
         </span>
-        ${["A","B","C","D","E","F"].map(g => `
+        ${["A", "B", "C", "D", "E", "F"]
+          .map(
+            (g) => `
           <label>
             <input type="radio" 
               name="course${dept}-${year}-${semester}-${idx}" 
               value="${g}" 
-              ${savedData[`${dept}-${year}-${semester}-${idx}`] === g ? "checked" : ""}>
+              ${
+                savedData[`${dept}-${year}-${semester}-${idx}`] === g
+                  ? "checked"
+                  : ""
+              }>
             ${g}
           </label>
-        `).join(" ")}
+        `
+          )
+          .join(" ")}
       `;
 
       // Tooltip
@@ -137,14 +159,14 @@ function renderCourses() {
       const tooltip = div.querySelector(".tooltip");
       infoBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        document.querySelectorAll(".tooltip.show").forEach(t => {
+        document.querySelectorAll(".tooltip.show").forEach((t) => {
           if (t !== tooltip) t.classList.remove("show");
         });
         tooltip.classList.toggle("show");
       });
 
       // Save grade
-      div.querySelectorAll("input").forEach(input => {
+      div.querySelectorAll("input").forEach((input) => {
         input.addEventListener("change", () => {
           savedData[`${dept}-${year}-${semester}-${idx}`] = input.value;
           localStorage.setItem("cgpaData", JSON.stringify(savedData));
@@ -172,22 +194,25 @@ function renderCourses() {
 
 document.addEventListener("click", (e) => {
   if (!e.target.closest(".course-item")) {
-    document.querySelectorAll(".tooltip.show").forEach(t => t.classList.remove("show"));
+    document
+      .querySelectorAll(".tooltip.show")
+      .forEach((t) => t.classList.remove("show"));
   }
 });
 
 // Calculate cumulative CGPA
 function calculateCGPA() {
-  let totalPoints = 0, totalCredits = 0;
+  let totalPoints = 0,
+    totalCredits = 0;
   const dept = deptSelect.value;
   if (!dept) return;
 
   const deptData = coursesData[dept] || {}; // ✅ handles nSc safely
 
   // Loop through normal courses (if any exist)
-  Object.keys(deptData).forEach(year => {
+  Object.keys(deptData).forEach((year) => {
     const yearData = deptData[year];
-    Object.keys(yearData).forEach(semester => {
+    Object.keys(yearData).forEach((semester) => {
       let courses = [...yearData[semester]];
 
       // Merge in any extra courses for this dept-year-sem
@@ -206,7 +231,7 @@ function calculateCGPA() {
   });
 
   // ✅ Special case: nSc may ONLY have extraCourses
-  Object.keys(extraCourses).forEach(key => {
+  Object.keys(extraCourses).forEach((key) => {
     if (key.startsWith(dept)) {
       extraCourses[key].forEach((course, idx) => {
         const grade = savedData[`${key}-${idx}`];
@@ -226,12 +251,12 @@ function calculateCGPA() {
   const cgpaVal = parseFloat(cgpa);
   let bgColor = "";
 
-  if (cgpaVal >= 4.5) bgColor = "#2ecc71";     // First class
+  if (cgpaVal >= 4.5) bgColor = "#2ecc71"; // First class
   else if (cgpaVal >= 3.5) bgColor = "#3498db"; // 2nd Upper
   else if (cgpaVal >= 2.4) bgColor = "#f1c40f"; // 2nd Lower
   else if (cgpaVal >= 1.5) bgColor = "#e67e22"; // 3rd Class
   else if (cgpaVal >= 1.0) bgColor = "#e74c3c"; // Pass
-  else bgColor = "#7f8c8d";                     // Fail
+  else bgColor = "#7f8c8d"; // Fail
 
   cgpaDisplay.style.backgroundColor = bgColor;
   cgpaDisplay.style.padding = "5px 10px";
